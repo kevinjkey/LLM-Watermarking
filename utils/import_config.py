@@ -9,5 +9,7 @@ def config_parser(config_file):
         sampler_params = all_params['sampler']
     if 'model' in all_params:
         model_params = all_params['model']
+    if 'general' in all_params:
+        general_params = all_params['general']
     
-    return watermarker_params, sampler_params, model_params
+    return watermarker_params, sampler_params, model_params, general_params
