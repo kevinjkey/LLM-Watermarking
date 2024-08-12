@@ -14,7 +14,7 @@ from utils.import_config import config_parser
 
 # Parse Configuration File
 config_file = os.path.join(os.getcwd(), 'config.yaml')
-watermark_params, sampler_params, model_params = config_parser(config_file)
+watermark_params, sampler_params, model_params, general_params = config_parser(config_file)
 
 # Create the Watermarker
 marker = Watermark(hash_value=watermark_params['hash_value'],
@@ -31,18 +31,14 @@ tokenizer = AutoTokenizer.from_pretrained(model_params['model_name'])
 model = AutoModelForCausalLM.from_pretrained(model_params['model_name'])
 model.eval()
 
-#TODO: READ IN TEXT
-# intial_text = "Thomas Jefferson was the"
-with open('/Users/kevinkey/Documents/JHU/ChatGPT/Final/LLM-Watermarking/input/input1.txt', 'r') as f:
+input_filepath = os.path.join(os.getcwd(), general_params['input_directory'], general_params['input_filename'])
+with open(input_filepath, 'r') as f:
 	initial_text = f.read()
-print(initial_text)
 token_ids = tokenizer.encode(initial_text, return_tensors='pt')[0]
 input_tokens = token_ids
-print(token_ids)
 
-# generate N more tokens. We are not using kv cache or anything smart.
-# This may be pretty slow.
-for i in tqdm(range(50)):
+# generate N more tokens
+for i in tqdm(range(model_params['num_output_tokens'])):
 
 	# pass tokens through the model to get logits
 	output = model(token_ids)["logits"][-1,:]
@@ -54,24 +50,35 @@ for i in tqdm(range(50)):
 	marked_output = marker.watermark(output.data.cpu().numpy(), token_ids_np)
 
     # sample
-	# tok = samp(output.data.cpu().numpy(), token_ids_np)
 	tok = samp(marked_output, token_ids_np)
 
 	# add the resulting token id to our list
 	token_ids_np = np.append(token_ids_np, tok)
 	token_ids = torch.from_numpy(token_ids_np)
 
-
-# print out resulting ids
-print(token_ids)
-
 # print out the decoded text
 print(tokenizer.decode(token_ids))
 
-# Test detector
+# Detect Watermark
 input_tokens = input_tokens.data.cpu().numpy()
-output_tokens = token_ids[len(input_tokens):].data.cpu().numpy()
-print("Input Tokens: ", input_tokens)
-print("Output Tokens: ", output_tokens)
-vocab_size = 50257
-z_metric = marker.detect(vocab_size, input_tokens, output_tokens)
+output_tokens = token_ids_np[len(input_tokens):]
+vocab_size = 50257 #TODO: Make this dynamic
+z_metric, green_list_count = marker.detect(vocab_size, input_tokens, output_tokens)
+decode_input_tokens = tokenizer.decode(input_tokens)
+decode_output_tokens = tokenizer.decode(output_tokens)
+print(f"Z Metric: {z_metric}")
+print(f"{green_list_count} of {len(output_tokens)} tokens generated are from the green list of tokens.")
+print(f"Watermark detected") if z_metric > watermark_params['z_threshold'] else print(f"Watermark NOT detected")
+
+# Save Output
+output_filename = f"output_{general_params['input_filename']}"
+output_filepath = os.path.join(os.getcwd(), general_params['output_directory'], output_filename)
+with open(output_filepath, 'w') as f:
+	f.write(f"Input:\n{decode_input_tokens}\n\n")
+	f.write(f"Output:\n{decode_output_tokens}\n\n")
+	f.write(f"Z Metric: {z_metric}\n")
+	f.write(f"{green_list_count} of {len(output_tokens)} tokens generated are from the green list of tokens.\n")
+	if z_metric > watermark_params['z_threshold']:
+		f.write(f"Watermark detected")
+	else:
+		f.write(f"Watermark NOT detected")
