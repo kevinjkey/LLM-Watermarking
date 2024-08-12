@@ -57,4 +57,4 @@ class Watermark():
             previous_token_id = token
 
         # Compute z metric
-        return self._compute_z_metric(green_list_count, len(output_token_ids))
+        return self._compute_z_metric(green_list_count, len(output_token_ids)), green_list_count
