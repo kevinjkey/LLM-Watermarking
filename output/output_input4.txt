@@ -1,0 +1,9 @@
+Input:
+His speech began with "Friends, Romans, Countrymen, and Others", and I know he meant me when he said "others." Anyways, his speech continued on to say 
+
+Output:
+ "the whole of history is written not as if from the first hand but by historians writing after themselves. A book that was never intended for you can be a powerful vehicle which brings your mind back into time in order at times help change it". This sentence sums up my view about this conference very well—it should have been titled The History As Written By People Who Know It Better Than We Do (or Whatsoever). However much we believe what others claim; or how different our beliefs are:
+
+Z Metric: 10.623244953089113
+71 of 100 tokens generated are from the green list of tokens.
+Watermark detected

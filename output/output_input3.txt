@@ -1,0 +1,10 @@
+Input:
+Once upon a time, in a far away land, there lived a beautiful princess who was waiting for her knight in shining armour.
+
+Output:
+ A great hero called Tairon brought his friends as the first knights of Tirith to take back their homeland from an evil force named Saruin (a name I don't believe is actually spoken). They faced and defeated many enemies along on this journey until they came into sight with no other than King Boralar - all that's left now are some bones... The Princess stands against them!
+The Prince-Princess had long admired him even when she feared he would betray/murdock
+
+Z Metric: 8.77572409168231
+63 of 100 tokens generated are from the green list of tokens.
+Watermark detected
