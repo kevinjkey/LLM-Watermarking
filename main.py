@@ -22,14 +22,23 @@ marker = Watermark(hash_value=watermark_params['hash_value'],
 				   hardness = watermark_params['hardness'])
 
 # Create the Sampler
-samp = Sampler(top_k=sampler_params['top_k'],
-			   frequency_penalty=sampler_params['frequency_penalty'],
-			   presence_penalty=sampler_params['presence_penalty'])
+if sampler_params['type']=="top_k":
+	samp = Sampler(top_k=sampler_params['top_k'],
+				frequency_penalty=sampler_params['frequency_penalty'],
+				presence_penalty=sampler_params['presence_penalty'])
+elif sampler_params['type']=="top_p":
+	samp = Sampler(top_p=sampler_params['top_p'],
+				frequency_penalty=sampler_params['frequency_penalty'],
+				presence_penalty=sampler_params['presence_penalty'])
 
 # download model and the associated tokenizer
 tokenizer = AutoTokenizer.from_pretrained(model_params['model_name'])
 model = AutoModelForCausalLM.from_pretrained(model_params['model_name'])
 model.eval()
+
+# Get endoftext token
+vocab = tokenizer.get_vocab()
+eot_token_id = vocab["<|endoftext|>"]
 
 input_filepath = os.path.join(os.getcwd(), general_params['input_directory'], general_params['input_filename'])
 with open(input_filepath, 'r') as f:
@@ -52,9 +61,14 @@ for i in tqdm(range(model_params['num_output_tokens'])):
     # sample
 	tok = samp(marked_output, token_ids_np)
 
+	# If endoftext token encountered, stop generating
+	if tok==eot_token_id:
+		break
+
 	# add the resulting token id to our list
 	token_ids_np = np.append(token_ids_np, tok)
 	token_ids = torch.from_numpy(token_ids_np)
+
 
 # print out the decoded text
 print(tokenizer.decode(token_ids))
@@ -62,7 +76,7 @@ print(tokenizer.decode(token_ids))
 # Detect Watermark
 input_tokens = input_tokens.data.cpu().numpy()
 output_tokens = token_ids_np[len(input_tokens):]
-vocab_size = 50257 #TODO: Make this dynamic
+vocab_size = len(vocab)
 z_metric, green_list_count = marker.detect(vocab_size, input_tokens, output_tokens)
 decode_input_tokens = tokenizer.decode(input_tokens)
 decode_output_tokens = tokenizer.decode(output_tokens)
