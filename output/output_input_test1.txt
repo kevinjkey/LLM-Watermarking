@@ -1,0 +1,31 @@
+Input:
+Each year, Apple releases a new iPhone with many hardware upgrades. This year, 
+
+Output:
+ Apple released a new iPhone with an always on feature. It uses a specialized wireless charging pad that allows you to charge the phone from any surface.  The back cover also doesn't require any special cases, making this a new product that Apple has never had before.  This is the first time anyone else has tried doing this and the manufacturers really pushed this, it seems.  Apple has given away the phone through an event called the Worldwide Developers Conference and I think that was a good thing.  I think that Apple fans can now have a new iPhone without needing to jump through too many hoops.  The reason why everyone around the world may have an iPhone 6 is because the new model looks different.  It
+
+Z Metric: 11.973674828092204
+101 of 150 tokens generated are from the green list of tokens.
+Watermark detected
+
+watermarker:
+  hash_value: 737800
+  green_list_size: 0.25
+  hardness: 2
+  z_threshold: 4
+
+sampler:
+  type: "top_p"
+  top_k: 15
+  top_p: .9
+  frequency_penalty: 1.0
+  presence_penalty: 1.0
+
+model:
+  model_name: "openai-community/gpt2-xl"
+  num_output_tokens: 150
+
+general:
+  input_directory: "input"
+  input_filename: "input_test.txt"
+  output_directory: "output"

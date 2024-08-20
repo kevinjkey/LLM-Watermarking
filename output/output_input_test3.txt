@@ -1,0 +1,9 @@
+Input:
+The most delicious summer meal is made with 
+
+Output:
+ fresh fish and vegetables.  If you don't get the chance to pick your own mushrooms, you can use the sausage casing method.  I found two  sausage casings in a store window: one for snow crab, the other for shiitake mushrooms.  The size difference was too huge for the price difference, so I used snow crab casing for this recipe and shelled mushrooms for her recipe.  If you can't find them for free at a grocery store, mushrooms will always give you that most perfect breaded texture that melts in your mouth.  Most fish cook up nicely in a butter sauce made from olive oil.  Add the fish a little at a time, stirring
+
+Z Metric: 10.842303978193728
+95 of 150 tokens generated are from the green list of tokens.
+Watermark detected

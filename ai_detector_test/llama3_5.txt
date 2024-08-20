@@ -1,0 +1,9 @@
+Cascading Model Trees
+Modeled data and developed building and maintenance tests
+Spearheaded software engineering process for data management and review
+Defined and implemented operational processes for Cascading Model Trees
+Utilized relational database for storing and updating sequences and data
+My Expectations
+I aim to leverage Java to pursue a degree in computer science. Additionally, I plan to learn Scala to grasp higher-level concepts. Participating in Google Summer of Code is also a goal, as a means to gain experience with open-source projects. While I'm thriving in my current roles, further opportunities may arise with a PhD.
+
+Z Metric: 3.188935899216566

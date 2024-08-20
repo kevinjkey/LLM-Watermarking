@@ -1,0 +1,10 @@
+Education:
+Bachelor of Science, Villanova University
+- Honors
+
+Skills:
+Machine Learning, Python, LLMs, Docker
+
+Experience:
+Engineer, Johns Hopkins APL
+- Designed 

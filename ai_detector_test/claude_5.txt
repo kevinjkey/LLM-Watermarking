@@ -1,0 +1,3 @@
+Cascading Model Trees - Modeled data and implemented building and maintenance tests - Initiated software engineering process for data management and review - Defined and implemented operational processes for Model Cascading Model Trees - Used relational database for storing and updating sequences, data My Expectations I'm planning to use Java to pursue a degree in computer science. I'll study Scala for some of the more advanced concepts. I'm also considering Google Summer of Code as a way to gain experience with open source. While I'm succeeding in three degrees, there might be more opportunities as a PhD.
+
+Z Metric: 5.222304449964206

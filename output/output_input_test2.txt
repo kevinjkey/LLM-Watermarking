@@ -1,0 +1,31 @@
+Input:
+Yesterday, I returned from my first ever trip to the island of Maui, Hawaii. The island was 
+
+Output:
+ awesome – not only because the weather was absolutely gorgeous but also because the food was amazing. While most of the food served on Maui is quick service and take out, the restaurant I visited (a local Hawaiian spot called Birdhouse) offers a fully vegan restaurant menu. For $40 per person, the restaurant served a variety of dishes, each with ingredient lists. For those of you that are vegan and are impressed with this level of vegan service in Hawaii, we will give you a hint – Vegan Gangsters Hawaii.
+
+Z Metric: 9.75743548120157
+70 of 106 tokens generated are from the green list of tokens.
+Watermark detected
+
+watermarker:
+  hash_value: 737800
+  green_list_size: 0.25
+  hardness: 2
+  z_threshold: 4
+
+sampler:
+  type: "top_p"
+  top_k: 15
+  top_p: .9
+  frequency_penalty: 1.0
+  presence_penalty: 1.0
+
+model:
+  model_name: "openai-community/gpt2-xl"
+  num_output_tokens: 150
+
+general:
+  input_directory: "input"
+  input_filename: "input_test.txt"
+  output_directory: "output"

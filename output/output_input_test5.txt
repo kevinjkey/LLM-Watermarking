@@ -1,0 +1,32 @@
+Input:
+Education:
+Bachelor of Science, Villanova University
+- Honors
+
+Skills:
+Machine Learning, Python, LLMs, Docker
+
+Experience:
+Engineer, Johns Hopkins APL
+- Designed 
+
+Output:
+ Cascading Model Trees
+
+- Modeled data and implemented building and maintenance tests
+
+- Initiated software engineering process for data management and review
+
+- Defined and implemented operational processes for Model Cascading Model Trees
+
+- Used relational database for storing and updating sequences, data
+
+
+My Expectations
+
+
+ I'm aiming to use Java to get to a degree in computer science. I'll learn Scala for some of the higher level concepts. I'm also targeting Google Summer of Code as a way to get my feet wet with open source. While I'm doing well at three degrees, there might be more prospects as a PhD.
+
+Z Metric: 7.6382873959700115
+71 of 132 tokens generated are from the green list of tokens.
+Watermark detected
