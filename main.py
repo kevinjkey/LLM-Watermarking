@@ -3,10 +3,6 @@ import torch
 from tqdm import tqdm
 import os
 
-'''
-This script uses the Sampler class to sample text from GPT2-large.
-'''
-
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from sampler import Sampler
 from watermark import Watermark
